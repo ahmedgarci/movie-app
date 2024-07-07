@@ -1,16 +1,12 @@
 const express = require('express')
 const server = express()
 const c= require("./Src/Domain/Repository/UserRepository")
+server.use(express.json())
+c.ConnectionToDataBase()
 
-const x = require("./Src/UseCases/LoginUseCase");
+const RegisterController = require("./Src/Controller/RegisterController");
 
-server.get('/',async()=>{
-    await c.ConnectionToDataBase();
-//    let a = await x({username:"ahmed",email:"k@gmail.com",password:"aaaaaaaaaaaaa"})
-//    let a = await x({username:"ahmed",email:"k@gmail.com",password:"aaaaaaaaaaaaa"})
-
-}    
-)
+server.post('/',RegisterController)
 
 
 server.listen(3000,()=>console.log("listenning"))

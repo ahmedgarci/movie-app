@@ -1,7 +1,7 @@
 
 
 const {FindUser} = require('../Domain/Entities/BusinessRules/index')
-const ComparePasswordsBcrypt = require("../Domain/Entities/BusinessRules/ComparePasswordsBcrypt");
+const ComparePasswordsBcrypt = require("../Infrastructure/ComparePasswordsBcrypt");
 
 module.exports = async({email,password})=>{
     try{
@@ -10,14 +10,13 @@ module.exports = async({email,password})=>{
         if(!UserExists){throw new Error(" user does not exist with that email")}
         
         let isCorrect = ComparePasswordsBcrypt(password,UserExists.password)
-
+        
         if(!isCorrect){throw new Error (" invalid credentials")}
 
         return UserExists.id
 
-
     }catch(e){
-        return e
+        throw e
     }
 
 

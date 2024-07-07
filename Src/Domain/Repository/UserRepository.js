@@ -30,6 +30,7 @@ module.exports =  class UserRepository{
             if(users.length > 0){
                 return users[0]
             }
+            return null;
         }catch(e){
             throw new Error(" error while fetching from database ")
         }
