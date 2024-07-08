@@ -9,11 +9,14 @@ module.exports = async({email,password})=>{
 
         if(!UserExists){throw new Error(" user does not exist with that email")}
         
-        let isCorrect = ComparePasswordsBcrypt(password,UserExists.password)
-        
-        if(!isCorrect){throw new Error (" invalid credentials")}
+        let isCorrect = await ComparePasswordsBcrypt(password,UserExists.password)
 
-        return UserExists.id
+        if(!isCorrect){throw new Error ("invalid credentials")}
+
+        return {
+            UserId : UserExists.id,
+            username: UserExists.username
+        }
 
     }catch(e){
         throw e
