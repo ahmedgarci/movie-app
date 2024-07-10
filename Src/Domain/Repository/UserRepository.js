@@ -54,13 +54,9 @@ module.exports =  class UserRepository{
                         email:email
                         };
 
-        }catch(e){console.log(e);}
+        }catch(e){throw new Error("error while saving ths user")}
     
     }  
-
-
-
-
 
 
 

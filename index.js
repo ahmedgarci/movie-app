@@ -1,22 +1,25 @@
 const express = require('express');
 const server = express();
 const sessionMiddleWare = require('./Src/Infrastructure/Session');
+require("dotenv").config({path:"./.env"})
 
 server.use(express.json())
 
 server.use(sessionMiddleWare())
 
-const c= require("./Src/Domain/Repository/UserRepository")
+const UserRepository= require("./Src/Domain/Repository/UserRepository")
 
-c.ConnectionToDataBase()
-const MoviesController = require("./Src/Controller/MoviesController")
+UserRepository.ConnectionToDataBase()
+
+const {GetMoviesDataController,GetPopularMoviesController} = require("./Src/Controller/MoviesController")
 const RegisterController = require("./Src/Controller/RegisterController");
 const LoginController = require("./Src/Controller/LoginController");
 
 
-server.post('/',RegisterController)
+server.post('/register',RegisterController)
 server.post('/login',LoginController)
-server.get("/movies",MoviesController)
+server.get("/movies",GetMoviesDataController)
+server.get("/popular",GetPopularMoviesController)
 
 
 server.listen(3000,()=>console.log("listenning"))

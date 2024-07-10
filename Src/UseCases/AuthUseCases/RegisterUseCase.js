@@ -1,5 +1,5 @@
-const {FindUser,CheckValidCredentials,SaveUser} = require('../Domain/Entities/BusinessRules/index')
-const HashedPassword = require("../Infrastructure/HashPassword");
+const {FindUser,CheckValidCredentials,SaveUser} = require('../../Domain/Entities/BusinessRules/index')
+const HashedPassword = require("../../Infrastructure/HashPassword");
 
 module.exports = async({username,email,password})=>{
     try{

@@ -1,5 +1,5 @@
 
-const RegisterUseCase = require('../UseCases/RegisterUseCase')
+const RegisterUseCase = require('../UseCases/AuthUseCases/RegisterUseCase')
 
 module.exports = async(req,res)=>{
 

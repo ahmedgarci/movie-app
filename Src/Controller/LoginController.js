@@ -1,4 +1,4 @@
-const LoginUseCase = require("../UseCases/LoginUseCase")
+const LoginUseCase = require("../UseCases/AuthUseCases/LoginUseCase")
 
 module.exports = async(req,res)=>{
     const {email,password}= req.body
